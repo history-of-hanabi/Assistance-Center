@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>長野市のお困りごと案内所｜暮らしの困ったを地域の専門家へ</title>
+<meta name="description" content="長野市で『どこに頼めばいい？』と思ったら。水道、電気、屋根、庭、片付けなど、暮らしのお困りごとを地域の専門家へつなぐ案内所です。">
+<style>
+:root{--navy:#1b2b4b;--navy2:#2c4170;--orange:#e8832a;--orange2:#c96a14;--bg:#fbf7f0;--beige:#f3ead9;--text:#25292e;--mute:#667;--header-h:56px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 20px)}
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;font-size:17px;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px}
+header{background:#fff;border-bottom:1px solid #eadfca;position:sticky;top:0;z-index:10}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);font-size:15px}
+.logo i{width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-style:normal;font-size:15px}
+header nav a{font-size:14px;color:var(--navy);padding:10px 4px;font-weight:600}
+.hero{background:linear-gradient(#fff,var(--beige));padding:32px 0 36px}
+.label{display:inline-block;background:#fff;border:1px solid var(--orange);color:var(--orange2);font-size:13px;font-weight:700;padding:2px 12px;border-radius:99px}
+h1{font-size:27px;line-height:1.5;color:var(--navy);margin:14px 0 8px}
+.sub{color:var(--navy2);font-weight:600}
+h2{font-size:22px;line-height:1.5;color:var(--navy);margin-bottom:14px}
+.ask{margin:28px 0 14px;font-size:20px;color:var(--navy);font-weight:700}
+.ask:before{content:"";display:inline-block;width:6px;height:20px;background:var(--orange);border-radius:3px;margin-right:8px;vertical-align:-3px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:2px solid #eadfca;border-radius:16px;padding:16px 8px 12px;min-height:178px;transition:transform .15s,border-color .15s;-webkit-tap-highlight-color:transparent}
+.card:hover{border-color:var(--orange)}
+.card:active{transform:scale(.97);background:#fff8ee}
+.card svg{width:52px;height:52px;margin-bottom:6px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card b{color:var(--navy);font-size:17px;line-height:1.4}
+.card small{color:var(--mute);font-size:13px;line-height:1.5;margin:4px 0 8px;flex:1}
+.card em{font-style:normal;background:var(--orange);color:#fff;font-size:14px;font-weight:700;border-radius:99px;padding:6px 10px;width:100%}
+.card.wide{grid-column:1/-1;min-height:0;flex-direction:row;text-align:left;gap:10px;padding:14px}
+.card.wide .t{flex:1}.card.wide em{width:auto;white-space:nowrap}
+.card.wide svg{margin:0;flex:none}
+section{padding:44px 0}
+section.alt{background:var(--beige)}
+p+p{margin-top:12px}
+.steps{display:grid;gap:12px;counter-reset:s}
+.step{background:#fff;border-radius:14px;padding:16px 16px 16px 70px;position:relative;border:1px solid #eadfca;font-weight:700;color:var(--navy)}
+.step:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:20px}
+.step span{display:block;font-size:12px;color:var(--orange2)}
+.box{background:#fff;border:2px dashed #d9c9a8;border-radius:14px;padding:18px;text-align:center;color:var(--mute)}
+details{background:#fff;border:1px solid #eadfca;border-radius:12px;margin-bottom:10px}
+summary{padding:16px;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;position:relative;padding-right:40px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"＋";position:absolute;right:14px;color:var(--orange)}
+details[open] summary:after{content:"－"}
+details p{padding:0 16px 16px;font-size:16px}
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta h2{color:#fff}.cta .card{text-align:center}
+.small{font-size:14px;color:var(--mute)}
+footer{background:#14203a;color:#cfd6e6;padding:28px 0 36px;font-size:14px}
+footer a{display:inline-block;padding:8px 12px 8px 0}
+
+/* ===== カテゴリー詳細画面 ===== */
+#view{display:none;padding:12px 0 40px}
+.back{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:0 18px;margin-bottom:8px;background:#fff;border:2px solid #eadfca;border-radius:99px;color:var(--navy);font-weight:700;font-size:16px;-webkit-tap-highlight-color:transparent}
+.back:active{background:#fff8ee;border-color:var(--orange)}
+#view h1{font-size:24px;margin:10px 0 4px}
+.vsub{display:flex;align-items:center;gap:8px;margin:18px 0 4px;color:var(--navy);font-weight:700;font-size:18px}
+.vsub:before{content:"";width:6px;height:18px;background:var(--orange);border-radius:3px}
+.pcard{background:#fff;border:1px solid #eadfca;border-radius:16px;padding:18px;margin:16px 0}
+.pcard h3{color:var(--navy);font-size:19px;margin-bottom:6px}
+.pcard dl{font-size:15px}
+.pcard dt{color:var(--mute);font-size:13px;margin-top:8px}
+.btn{display:block;width:100%;background:var(--orange);color:#fff;text-align:center;font-weight:700;padding:16px;border:0;border-radius:12px;margin-top:16px;font-size:17px;line-height:1.5;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn:active{background:var(--orange2)}
+.tel{text-align:center;color:var(--mute);font-size:14px;margin-top:6px}
+.empty{background:#fff;border:2px solid #eadfca;border-radius:16px;padding:22px 18px;text-align:center;margin:14px 0}
+.empty b{display:block;color:var(--navy);font-size:19px;line-height:1.5}
+.empty p{font-size:13px;color:var(--mute);margin:6px 0 2px;line-height:1.6}
+.others{margin-top:22px}
+.others h2{font-size:17px;margin-bottom:10px}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chip{display:flex;align-items:center;gap:8px;min-height:52px;padding:8px 12px;background:#fff;border:2px solid #eadfca;border-radius:14px;color:var(--navy);font-weight:700;font-size:15px;line-height:1.35;-webkit-tap-highlight-color:transparent}
+.chip:active{background:#fff8ee;border-color:var(--orange)}
+.chip svg{width:26px;height:26px;flex:none;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== 相談の確認画面（下から出るシート） ===== */
+.sheet{position:fixed;inset:0;z-index:100;display:none}
+.sheet.open{display:block}
+.sheet .bg{position:absolute;inset:0;background:rgba(20,32,58,.55)}
+.sheet .panel{position:absolute;left:0;right:0;bottom:0;max-width:560px;margin:0 auto;background:#fff;border-radius:20px 20px 0 0;padding:26px 20px calc(20px + env(safe-area-inset-bottom));animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.panel h2{font-size:20px;margin-bottom:6px;text-align:center}
+.panel .ph{font-size:26px;font-weight:700;color:var(--navy);text-align:center;margin:8px 0}
+.panel .note{font-size:14px;color:var(--mute);text-align:center;line-height:1.7}
+.panel .btn{text-decoration:none}
+.panel .btn.off{background:#cfc6b6;pointer-events:none}
+.btn-out{display:block;width:100%;min-height:54px;margin-top:10px;background:#fff;color:var(--navy);border:2px solid #d9c9a8;border-radius:12px;font-weight:700;font-size:17px;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-out:active{background:#fff8ee;border-color:var(--orange)}
+
+/* ===== 開発確認用（デモモードOFFのときは画面に一切出ません） ===== */
+.devbar{background:#fff3cd;border:1px solid #e0c36a;color:#6b5200;font-size:13px;font-weight:700;text-align:center;padding:6px 10px;border-radius:10px;margin:6px 0 4px}
+.demo{border:2px dashed #d9c9a8;background:#fffdf8}
+.badge{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;margin-bottom:8px}
+.demo-note{font-size:13px;color:var(--mute);margin-top:10px;line-height:1.6;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top" id="logo"><i>?</i>長野市のお困りごと案内所</a>
+<nav><a href="#howto">使い方</a><a href="#faq">質問</a></nav>
+</div></header>
+
+<main id="lp">
+<div class="hero" id="top"><div class="wrap">
+<span class="label">長野市の地域密着サービス</span>
+<h1>長野市で、<br>『どこに頼めばいい？』<br>と思ったら。</h1>
+<p class="sub">暮らしの中の『困った』を、<br>地域の専門家へ。</p>
+<h2 class="ask" id="choose">今、何に困っていますか？</h2>
+<div class="grid cats"></div>
+</div></div>
+
+<section><div class="wrap">
+<h2>困った。でも、誰に頼めばいい？</h2>
+<p>水漏れ、電気、屋根、庭、片付け。困っていることはあるけれど、『どこに頼めばいいんだろう？』と迷うことがあります。</p>
+<p>長野市のお困りごと案内所は、そんなときの最初の相談先です。</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2 id="howto">ご利用方法</h2>
+<div class="steps">
+<div class="step"><span>STEP 1</span>困りごとを選ぶ</div>
+<div class="step"><span>STEP 2</span>相談先を確認する</div>
+<div class="step"><span>STEP 3</span>地域の専門家に相談する</div>
+</div></div></section>
+
+<section><div class="wrap">
+<h2>対応できる困りごと</h2>
+<div class="grid cats"></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2>地域の専門家について</h2>
+<p>長野市で仕事をしている専門家につなぎます。相談先は、地域の事情をよく知る事業者です。</p>
+<div class="box" style="margin-top:16px"><b style="color:var(--navy)">現在、掲載準備中です</b><br><span class="small">事業者の情報は、準備ができ次第こちらでご案内します。</span></div>
+</div></section>
+
+<section><div class="wrap">
+<h2 id="faq">よくある質問</h2>
+<details><summary>相談したら必ず依頼しないといけませんか？</summary><p>いいえ。実際の依頼・料金・作業内容については、相談先の事業者に直接ご確認いただく形です。</p></details>
+<details><summary>料金はいくらですか？</summary><p>料金は事業者によって異なります。相談先の事業者へ直接ご確認ください。</p></details>
+<details><summary>紹介料が発生することはありますか？</summary><p>このサービスでは、掲載・紹介した事業者から紹介料等を受け取る場合があります。</p></details>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2>運営者について</h2>
+<p>「困ったときに、気軽に相談できる場所をつくりたい。」</p>
+<p class="small" id="operator"></p>
+</div></section>
+
+<section class="cta"><div class="wrap">
+<h2>長野市で、<br>『どこに頼めばいい？』<br>と思ったら。</h2>
+<p style="margin-bottom:20px">一人で探し回る前に、まずは困っていることを選んでください。</p>
+<div class="grid cats"></div>
+</div></section>
+</main>
+
+<main id="view"><div class="wrap">
+<a class="back" href="#choose">← 困りごとを選びなおす</a>
+<div id="devbar"></div>
+<h1 id="vt"></h1>
+<p class="small" id="vd"></p>
+<div class="vsub">地域の専門家</div>
+<div id="list"></div>
+<div class="others" id="others"></div>
+</div></main>
+
+<footer><div class="wrap">
+<p style="color:#fff;font-weight:700;margin-bottom:8px">長野市のお困りごと案内所</p>
+<div id="flinks"></div>
+<p style="margin-top:12px">© 長野市のお困りごと案内所</p>
+</div></footer>
+
+<!-- 相談の確認画面 -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
+<div class="bg" data-close></div>
+<div class="panel">
+<h2 id="sh-t"></h2>
+<p class="ph" id="sh-p"></p>
+<p class="note" id="sh-n"></p>
+<a class="btn" id="sh-call">電話をかける</a>
+<button class="btn-out" id="sh-back" type="button" data-close>戻る</button>
+</div></div>
+
+<script>
+/* ============================================================
+   ★★★ 公開前に必ず確認 ★★★
+   isDemoMode = true  → 開発確認用（デモカードを表示）
+   isDemoMode = false → 本番公開用（デモは一切表示されない）
+   GitHub Pagesに公開する前に、必ず false にしてください。
+   ============================================================ */
+const isDemoMode = true;
+
+/* ===== 差し替えエリア：ここだけ編集すれば完成 ===== */
+const SITE={
+  operator:"運営者情報は準備中です。",
+  links:[ // {label,url} を入れるとフッターに表示
+    {label:"運営者情報",url:""},{label:"プライバシーポリシー",url:""},
+    {label:"利用規約",url:""},{label:"お問い合わせ",url:""}
+  ]
+};
+const CATEGORIES=[
+ {id:"water",name:"水道・トイレ",desc:"水漏れ・詰まり・蛇口など",icon:'<path d="M12 3C9 8 6 11 6 15a6 6 0 0 0 12 0c0-4-3-7-6-12z"/>'},
+ {id:"electric",name:"電気・エアコン",desc:"電気・エアコン・設備の困りごと",icon:'<path d="M13 2 5 14h6l-1 8 8-12h-6z"/>'},
+ {id:"roof",name:"屋根・雨漏り",desc:"雨漏り・屋根・外まわりなど",icon:'<path d="M3 11 12 3l9 8M5 10v10h14V10M10 20v-6h4v6"/>'},
+ {id:"garden",name:"庭・草刈り",desc:"草刈り・剪定・庭木など",icon:'<path d="M12 21v-8M12 13c-5 0-7-4-7-8 5 0 7 3 7 8zM12 15c4 0 6-3 6-6-4 0-6 2-6 6z"/>'},
+ {id:"clean",name:"不用品・片付け",desc:"不用品・片付け・暮らしの整理など",icon:'<path d="M3 8l9-4 9 4-9 4zM3 8v9l9 4 9-4V8M12 12v9"/>'},
+ {id:"other",name:"その他",desc:"どこに頼めばいいかわからない場合はこちら",icon:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17v.1"/>',wide:true}
+];
+/* 確認画面の文言（運用開始時にここで調整できます） */
+const CONFIRM={
+  title:"さんに電話で相談します",
+  note:"相談したからといって、必ず依頼する必要はありません。料金や内容は、お電話で直接ご確認ください。",
+  call:"電話をかける",
+  back:"戻る"
+};
+/* 業者データ（今は空）。追加するときは下の形式でコピーして入れる
+   → 入れた瞬間、そのカテゴリーに業者カードが自動表示されます（画面のコードは触らない）
+   1件なら1件、複数なら縦に並びます。phone が空の業者には相談ボタンも電話リンクも作りません。
+const PROVIDERS=[
+ {id:"p001",name:"〇〇設備",category:"water",area:"長野市〇〇周辺",
+  description:"",services:["水漏れ","トイレ詰まり"],hours:"9:00〜18:00",
+  phone:"026-000-0000",image:"",available:true}
+];*/
+const PROVIDERS=[];
+/* ===================================================== */
+
+const $=s=>document.querySelector(s);
+const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const has=v=>v!==undefined&&v!==null&&String(v).trim()!=="";
+
+/* 固定ヘッダーの実際の高さを取得してCSSに反映 */
+const hd=document.querySelector("header");
+const setH=()=>document.documentElement.style.setProperty("--header-h",hd.offsetHeight+"px");
+setH();addEventListener("resize",setH);
+if(window.ResizeObserver)new ResizeObserver(setH).observe(hd);
+
+function catCards(){
+  const h=CATEGORIES.map(c=>{
+    const svg=`<svg viewBox="0 0 24 24" aria-hidden="true">${c.icon}</svg>`;
+    return c.wide
+     ?`<a class="card wide" href="#cat=${c.id}">${svg}<div class="t"><b>${esc(c.name)}</b><br><small>${esc(c.desc)}</small></div><em>このことで相談する</em></a>`
+     :`<a class="card" href="#cat=${c.id}">${svg}<b>${esc(c.name)}</b><small>${esc(c.desc)}</small><em>このことで相談する</em></a>`;
+  }).join("");
+  document.querySelectorAll(".cats").forEach(e=>e.innerHTML=h);
+}
+
+/* 実在業者カード。phoneがある場合だけ「相談する」ボタンを作る（押すと確認画面が開く） */
+function providerCard(p){
+  const name=has(p.name)?p.name:"事業者";
+  const svc=Array.isArray(p.services)?p.services.filter(has).join("、"):"";
+  const row=(t,v)=>has(v)?`<dt>${t}</dt><dd>${esc(v)}</dd>`:"";
+  const phone=has(p.phone)?String(p.phone):"";
+  const tel=phone.replace(/[^0-9+]/g,"");
+  return `<div class="pcard"><h3>${esc(name)}</h3><dl>${row("対応エリア",p.area)}${row("対応内容",svc||p.description)}${row("営業時間",p.hours)}</dl>`
+   +(tel?`<button class="btn" type="button" data-name="${esc(name)}" data-phone="${esc(phone)}" data-tel="${esc(tel)}">${esc(name)}に相談する</button>`
+        :`<p class="tel" style="margin-top:12px">連絡先は準備中です</p>`)+`</div>`;
+}
+
+/* 【開発確認用】デモカード。isDemoMode が true のときだけ使われる。電話は発信しない */
+function demoCard(cat,label){
+  return `<div class="pcard demo"><span class="badge">掲載イメージ（デモ表示）</span>
+  <h3>【掲載予定の事業者${label}】</h3>
+  <dl><dt>対応エリア</dt><dd>長野市内</dd><dt>対応内容</dt><dd>${esc(cat.desc)}</dd><dt>営業時間</dt><dd>掲載時に表示</dd></dl>
+  <button class="btn" type="button" data-demo="1" data-name="掲載予定の事業者${label}">この事業者に相談する</button>
+  <p class="demo-note">これは掲載イメージです。実在の事業者ではなく、電話もかかりません。</p></div>`;
+}
+
+function otherCats(curId){
+  const chips=CATEGORIES.filter(c=>c.id!==curId).map(c=>
+    `<a class="chip" href="#cat=${c.id}"><svg viewBox="0 0 24 24" aria-hidden="true">${c.icon}</svg><span>${esc(c.name)}</span></a>`).join("");
+  return `<h2>別のカテゴリー</h2><div class="chips">${chips}</div>`;
+}
+
+/* ===== 確認画面の開閉 ===== */
+function openSheet(d){
+  const demo=!!d.demo, call=$("#sh-call");
+  $("#sh-t").textContent=demo?d.name+"に電話で相談します（デモ表示）":d.name+CONFIRM.title;
+  $("#sh-n").textContent=demo?"デモ表示のため、電話は発信されません。":CONFIRM.note;
+  if(demo){
+    $("#sh-p").textContent="";
+    call.removeAttribute("href");call.classList.add("off");call.textContent="電話をかける（デモのため発信しません）";
+  }else{
+    $("#sh-p").textContent=d.phone;
+    call.setAttribute("href","tel:"+d.tel);call.classList.remove("off");call.textContent=CONFIRM.call;
+  }
+  $("#sh-back").textContent=CONFIRM.back;
+  $("#sheet").classList.add("open");
+  document.body.style.overflow="hidden";
+  $("#sh-back").focus(); /* 誤ってEnterを押しても発信されないよう「戻る」にフォーカス */
+}
+function closeSheet(){
+  $("#sheet").classList.remove("open");
+  document.body.style.overflow="";
+}
+$("#list").addEventListener("click",e=>{
+  const b=e.target.closest("button.btn");
+  if(!b)return;
+  openSheet({name:b.dataset.name,phone:b.dataset.phone,tel:b.dataset.tel,demo:b.dataset.demo==="1"});
+});
+$("#sheet").addEventListener("click",e=>{if(e.target.closest("[data-close]"))closeSheet()});
+addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet()});
+
+function route(){
+  closeSheet();
+  const m=location.hash.match(/^#cat=(\w+)/);
+  const cat=m&&CATEGORIES.find(c=>c.id===m[1]);
+  if(!cat){
+    $("#lp").style.display="";$("#view").style.display="none";
+    const id=decodeURIComponent(location.hash.slice(1));
+    const el=id&&document.getElementById(id);
+    if(el)requestAnimationFrame(()=>el.scrollIntoView());
+    return;
+  }
+  $("#lp").style.display="none";$("#view").style.display="block";
+  $("#vt").textContent=cat.name+"について相談する";
+  $("#vd").textContent=cat.desc;
+
+  const list=PROVIDERS.filter(p=>p&&p.available!==false&&p.category===cat.id);
+  let html="";
+  if(list.length){
+    html=list.map(providerCard).join("");              /* 業者あり：1件でも複数でも縦に並ぶ */
+  }else if(isDemoMode){
+    html=demoCard(cat,"A")+demoCard(cat,"B");           /* 業者0件＋デモON：確認用カード2枚 */
+  }else{
+    html=`<div class="empty"><b>現在、このカテゴリーの相談先を準備中です。</b><p>準備ができ次第、こちらでご案内します。</p>
+      <a class="btn" href="#choose" style="text-decoration:none">ほかの困りごとを探す</a></div>`; /* 業者0件＋デモOFF */
+  }
+  $("#list").innerHTML=html;
+  $("#devbar").innerHTML=isDemoMode?`<div class="devbar">開発確認用：デモモードON（公開前にOFFにしてください）</div>`:"";
+  $("#others").innerHTML=otherCats(cat.id);
+  scrollTo(0,0);
+}
+catCards();
+$("#operator").textContent=SITE.operator;
+$("#flinks").innerHTML=SITE.links.map(l=>has(l.url)?`<a href="${esc(l.url)}">${esc(l.label)}</a>`:`<a href="#top" style="opacity:.7">${esc(l.label)}</a>`).join("");
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
