@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>長野市のお困りごと案内所｜暮らしの困ったを地域の専門家へ</title>
+<meta name="description" content="長野市で『どこに頼めばいい？』と思ったら。水道、電気、屋根、庭、片付けなど、暮らしのお困りごとを地域の専門家へつなぐ案内所です。">
+<style>
+:root{--navy:#1b2b4b;--navy2:#2c4170;--orange:#e8832a;--orange2:#c96a14;--bg:#fbf7f0;--beige:#f3ead9;--text:#25292e;--mute:#667;--header-h:56px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 20px)}
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;font-size:17px;overflow-x:hidden;word-break:break-word}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px}
+header{background:#fff;border-bottom:1px solid #eadfca;position:sticky;top:0;z-index:10}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);font-size:15px}
+.logo i{width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-style:normal;font-size:15px}
+header nav a{font-size:14px;color:var(--navy);padding:10px 4px;font-weight:600}
+.hero{background:linear-gradient(#fff,var(--beige));padding:32px 0 36px}
+.label{display:inline-block;background:#fff;border:1px solid var(--orange);color:var(--orange2);font-size:13px;font-weight:700;padding:2px 12px;border-radius:99px}
+h1{font-size:27px;line-height:1.5;color:var(--navy);margin:14px 0 8px}
+.sub{color:var(--navy2);font-weight:600}
+h2{font-size:22px;line-height:1.5;color:var(--navy);margin-bottom:14px}
+.ask{margin:28px 0 14px;font-size:20px;color:var(--navy);font-weight:700}
+.ask:before{content:"";display:inline-block;width:6px;height:20px;background:var(--orange);border-radius:3px;margin-right:8px;vertical-align:-3px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:2px solid #eadfca;border-radius:16px;padding:16px 8px 12px;min-height:178px;transition:transform .15s,border-color .15s;-webkit-tap-highlight-color:transparent}
+.card:hover{border-color:var(--orange)}
+.card:active{transform:scale(.97);background:#fff8ee}
+.card svg{width:52px;height:52px;margin-bottom:6px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card b{color:var(--navy);font-size:17px;line-height:1.4}
+.card small{color:var(--mute);font-size:13px;line-height:1.5;margin:4px 0 8px;flex:1}
+.card em{font-style:normal;background:var(--orange);color:#fff;font-size:14px;font-weight:700;border-radius:99px;padding:6px 10px;width:100%}
+.card.wide{grid-column:1/-1;min-height:0;flex-direction:row;text-align:left;gap:10px;padding:14px}
+.card.wide .t{flex:1}.card.wide em{width:auto;white-space:nowrap}
+.card.wide svg{margin:0;flex:none}
+section{padding:44px 0}
+section.alt{background:var(--beige)}
+p+p{margin-top:12px}
+.steps{display:grid;gap:12px;counter-reset:s}
+.step{background:#fff;border-radius:14px;padding:16px 16px 16px 70px;position:relative;border:1px solid #eadfca;font-weight:700;color:var(--navy)}
+.step:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:20px}
+.step span{display:block;font-size:12px;color:var(--orange2)}
+.box{background:#fff;border:2px dashed #d9c9a8;border-radius:14px;padding:18px;text-align:center;color:var(--mute)}
+details{background:#fff;border:1px solid #eadfca;border-radius:12px;margin-bottom:10px}
+summary{padding:16px;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;position:relative;padding-right:40px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"＋";position:absolute;right:14px;color:var(--orange)}
+details[open] summary:after{content:"－"}
+details p{padding:0 16px 16px;font-size:16px}
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta h2{color:#fff}.cta .card{text-align:center}
+.small{font-size:14px;color:var(--mute)}
+footer{background:#14203a;color:#cfd6e6;padding:28px 0 36px;font-size:14px}
+.flinks{display:flex;flex-wrap:wrap;gap:0 4px}
+.flinks a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px 0 0;color:#e6ebf7;text-decoration:underline;text-underline-offset:3px}
+
+/* ===== カテゴリー詳細画面（総合受付へ相談） ===== */
+#view{display:none;padding:12px 0 40px}
+.back{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:0 18px;margin-bottom:8px;background:#fff;border:2px solid #eadfca;border-radius:99px;color:var(--navy);font-weight:700;font-size:16px;-webkit-tap-highlight-color:transparent}
+.back:active{background:#fff8ee;border-color:var(--orange)}
+#view h1{font-size:24px;margin:10px 0 4px}
+.flow{background:#fff;border:1px solid #eadfca;border-radius:16px;padding:18px;margin:18px 0 12px}
+.flow h2{font-size:18px;margin-bottom:8px;line-height:1.6}
+.flow p{font-size:16px;line-height:1.9}
+.resp{font-size:15px;color:var(--navy);font-weight:700;margin:12px 0 4px;padding-left:12px;border-left:5px solid var(--orange);line-height:1.7}
+.hours{font-size:15px;color:var(--navy);margin:6px 0 0;font-weight:700}
+.notice{font-size:14px;color:#7a4b00;background:#fff3dc;border-radius:10px;padding:10px 14px;margin-top:10px;line-height:1.7}
+.prep{font-size:15px;color:var(--navy);background:#fff;border:2px dashed #d9c9a8;border-radius:12px;padding:12px 14px;margin-top:12px;text-align:center;font-weight:700}
+.btn{display:block;width:100%;background:var(--orange);color:#fff;text-align:center;font-weight:700;padding:18px;border:0;border-radius:12px;margin-top:16px;font-size:18px;line-height:1.5;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn:active{background:var(--orange2)}
+.feenote{font-size:13px;color:var(--mute);line-height:1.7;margin-top:12px}
+.others{margin-top:26px}
+.others h2{font-size:17px;margin-bottom:10px}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chip{display:flex;align-items:center;gap:8px;min-height:52px;padding:8px 12px;background:#fff;border:2px solid #eadfca;border-radius:14px;color:var(--navy);font-weight:700;font-size:15px;line-height:1.35;-webkit-tap-highlight-color:transparent}
+.chip:active{background:#fff8ee;border-color:var(--orange)}
+.chip svg{width:26px;height:26px;flex:none;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== 情報ページ ===== */
+#page{display:none;padding:12px 0 48px}
+#page h1{font-size:24px;margin:10px 0 6px}
+.doc h2{font-size:18px;margin:30px 0 8px;padding-left:12px;border-left:5px solid var(--orange);line-height:1.5}
+.doc p{font-size:16px;line-height:1.95}
+.doc p+p{margin-top:10px}
+.doc ul{padding-left:1.4em;margin-top:8px}
+.doc li{font-size:16px;line-height:1.9;margin-top:4px}
+.doc .lead{color:var(--navy2);font-weight:600}
+.info{background:#fff;border:1px solid #eadfca;border-radius:16px;padding:4px 18px;margin-top:14px}
+.info>div{padding:14px 0;border-bottom:1px solid #f0e6d2}
+.info>div:last-child{border-bottom:0}
+.info dt{color:var(--mute);font-size:13px}
+.info dd{color:var(--navy);font-weight:700;font-size:16px;margin-top:2px}
+.pending{color:var(--mute);font-weight:400}
+a.lnk{color:var(--orange2);text-decoration:underline;text-underline-offset:3px;word-break:break-all}
+.endback{margin-top:28px}
+
+/* ===== 相談の確認画面（下から出るシート） ===== */
+.sheet{position:fixed;inset:0;z-index:100;display:none}
+.sheet.open{display:block}
+.sheet .bg{position:absolute;inset:0;background:rgba(20,32,58,.55)}
+.sheet .panel{position:absolute;left:0;right:0;bottom:0;max-width:560px;margin:0 auto;max-height:90vh;overflow-y:auto;background:#fff;border-radius:20px 20px 0 0;padding:26px 20px calc(20px + env(safe-area-inset-bottom));animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.panel h2{font-size:20px;margin-bottom:6px;text-align:center}
+.panel .lead2{font-size:15px;text-align:center;color:var(--navy2);margin-bottom:10px;line-height:1.7}
+.panel dl{background:var(--bg);border-radius:12px;padding:12px 16px;font-size:15px}
+.panel dt{color:var(--mute);font-size:12px;margin-top:6px}
+.panel dt:first-child{margin-top:0}
+.panel dd{color:var(--navy);font-weight:700}
+.panel dd.ph{font-size:24px}
+.panel .note{font-size:14px;color:var(--mute);text-align:center;line-height:1.7;margin-top:12px}
+.panel a.btn{text-decoration:none}
+.panel a.btn.off{background:#cfc6b6;pointer-events:none}
+.btn-out{display:block;width:100%;min-height:54px;margin-top:10px;background:#fff;color:var(--navy);border:2px solid #d9c9a8;border-radius:12px;font-weight:700;font-size:17px;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-out:active{background:#fff8ee;border-color:var(--orange)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top" id="logo"><i>?</i>長野市のお困りごと案内所</a>
+<nav><a href="#howto">使い方</a><a href="#faq">質問</a></nav>
+</div></header>
+
+<main id="lp">
+<div class="hero" id="top"><div class="wrap">
+<span class="label">長野市の地域密着サービス</span>
+<h1>長野市で、<br>『どこに頼めばいい？』<br>と思ったら。</h1>
+<p class="sub">暮らしの中の『困った』を、<br>地域の専門家へ。</p>
+<h2 class="ask" id="choose">今、何に困っていますか？</h2>
+<div class="grid cats"></div>
+</div></div>
+
+<section><div class="wrap">
+<h2>困った。でも、誰に頼めばいい？</h2>
+<p>水漏れ、電気、屋根、庭、片付け。困っていることはあるけれど、『どこに頼めばいいんだろう？』と迷うことがあります。</p>
+<p>長野市のお困りごと案内所は、そんなときの最初の相談先です。</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2 id="howto">ご利用方法</h2>
+<div class="steps">
+<div class="step"><span>STEP 1</span>困りごとを選ぶ</div>
+<div class="step"><span>STEP 2</span>総合受付に電話で相談する</div>
+<div class="step"><span>STEP 3</span>内容を確認し、必要に応じて地域の専門家へ相談。相談者へ返答します</div>
+</div></div></section>
+
+<section><div class="wrap">
+<h2>対応できる困りごと</h2>
+<div class="grid cats"></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2>地域の専門家について</h2>
+<p>総合受付が困りごとの内容・地域・状況をお聞きしたうえで、必要に応じて、長野市で仕事をしている地域の専門業者へ相談します。</p>
+<div class="box" style="margin-top:16px"><b style="color:var(--navy)">専門業者の連絡先は、このサイトには掲載していません。</b><br><span class="small">まずは、総合受付へご相談ください。</span></div>
+</div></section>
+
+<section><div class="wrap">
+<h2 id="faq">よくある質問</h2>
+<details><summary>相談したら必ず依頼しないといけませんか？</summary><p>いいえ。まずは総合受付でお話を伺うだけで、依頼する義務はありません。実際の依頼・料金・作業内容は、事業者と確認のうえ決めていただきます。</p></details>
+<details><summary>料金はいくらですか？</summary><p>料金は事業者や作業内容によって異なります。ご相談の際にあわせてご確認ください。</p></details>
+<details><summary>紹介料が発生することはありますか？</summary><p>このサービスでは、掲載・紹介した事業者から紹介料等を受け取る場合があります。</p></details>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2>運営者について</h2>
+<p>「困ったときに、気軽に相談できる場所をつくりたい。」</p>
+<p class="small"><a class="lnk" href="#about">運営者情報を見る</a></p>
+</div></section>
+
+<section class="cta"><div class="wrap">
+<h2>長野市で、<br>『どこに頼めばいい？』<br>と思ったら。</h2>
+<p style="margin-bottom:20px">一人で探し回る前に、まずは困っていることを選んでください。</p>
+<div class="grid cats"></div>
+</div></section>
+</main>
+
+<main id="view"><div class="wrap">
+<a class="back" href="#choose">← 困りごとを選びなおす</a>
+<h1 id="vt"></h1>
+<p class="small" id="vd"></p>
+<div id="vbody"></div>
+<div class="others" id="others"></div>
+</div></main>
+
+<main id="page"><div class="wrap doc">
+<a class="back" href="#top">← トップへ戻る</a>
+<h1 id="pt"></h1>
+<div id="pb"></div>
+<a class="back endback" href="#top">← トップへ戻る</a>
+</div></main>
+
+<footer><div class="wrap">
+<p style="color:#fff;font-weight:700;margin-bottom:6px">長野市のお困りごと案内所</p>
+<nav class="flinks" aria-label="フッター">
+<a href="#about">運営者情報</a>
+<a href="#privacy">プライバシーポリシー</a>
+<a href="#terms">利用規約</a>
+<a href="#contact">お問い合わせ</a>
+</nav>
+<p style="margin-top:10px">© 長野市のお困りごと案内所</p>
+</div></footer>
+
+<!-- 総合受付への電話確認画面 -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
+<div class="bg" data-close></div>
+<div class="panel">
+<h2 id="sh-t">総合受付へ電話で相談します</h2>
+<p class="lead2">長野市のお困りごと案内所の総合受付へ電話します。</p>
+<dl id="sh-dl"></dl>
+<p class="note" id="sh-n"></p>
+<a class="btn" id="sh-call">電話をかける</a>
+<button class="btn-out" id="sh-back" type="button" data-close>戻る</button>
+</div></div>
+
+<script>
+/* ============================================================
+   ★ 総合受付の設定（ここだけ編集すれば反映されます）
+   ・phone：総合受付の電話番号。空欄のままなら「準備中」と表示され、
+     電話は絶対に発信されません（架空の番号は入れないでください）。
+   ・hours：受付時間（例："9:00〜17:00"）。空欄なら表示しません。
+   ・responseNote：連絡の目安の文言。運用に合わせて変更できます。
+   ・showEmergencyNotice：true にすると「緊急対応窓口ではありません」の
+     注意書きを表示します。24時間の緊急対応をしないなら true を推奨。
+   ・feeNote：紹介料等の説明（金額や条件は、契約が決まってから追記）。
+   ============================================================ */
+const RECEPTION={
+  phone:"",
+  hours:"",
+  responseNote:"緊急性のないご相談は、原則7日以内を目安にご連絡します。",
+  showEmergencyNotice:false,
+  emergencyNotice:"当サービスは緊急対応窓口ではありません。",
+  feeNote:"相談内容に応じて専門業者へつなぎ、実際の依頼・紹介につながった場合、当サービスが紹介料等を受け取る場合があります。",
+  confirmNote:"相談したからといって、必ず依頼する必要はありません。"
+};
+
+/* ============================================================
+   ★ 運営者情報はここに入力（空欄のままなら「現在準備中です」と表示）
+   ============================================================ */
+const OPERATOR={
+  name:"",           // 運営者名
+  representative:"", // 代表者名
+  address:"",        // 所在地
+  phone:"",          // 電話番号
+  email:"",          // メールアドレス
+  business:""        // 事業内容
+};
+
+const CATEGORIES=[
+ {id:"water",name:"水道・トイレ",desc:"水漏れ・詰まり・蛇口など",icon:'<path d="M12 3C9 8 6 11 6 15a6 6 0 0 0 12 0c0-4-3-7-6-12z"/>'},
+ {id:"electric",name:"電気・エアコン",desc:"電気・エアコン・設備の困りごと",icon:'<path d="M13 2 5 14h6l-1 8 8-12h-6z"/>'},
+ {id:"roof",name:"屋根・雨漏り",desc:"雨漏り・屋根・外まわりなど",icon:'<path d="M3 11 12 3l9 8M5 10v10h14V10M10 20v-6h4v6"/>'},
+ {id:"garden",name:"庭・草刈り",desc:"草刈り・剪定・庭木など",icon:'<path d="M12 21v-8M12 13c-5 0-7-4-7-8 5 0 7 3 7 8zM12 15c4 0 6-3 6-6-4 0-6 2-6 6z"/>'},
+ {id:"clean",name:"不用品・片付け",desc:"不用品・片付け・暮らしの整理など",icon:'<path d="M3 8l9-4 9 4-9 4zM3 8v9l9 4 9-4V8M12 12v9"/>'},
+ {id:"other",name:"その他",desc:"どこに頼めばいいかわからない場合はこちら",icon:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17v.1"/>',wide:true}
+];
+
+/* ------------------------------------------------------------
+   ★ 専門業者データ【内部用】
+     一般のお客様の画面には、一切表示されません（電話番号も出ません）。
+     将来、総合受付が相談内容に応じて確認・連携するための内部情報です。
+     書き方（コピーして追加）：
+     {id:"p001",name:"〇〇設備",category:"water",area:"長野市〇〇周辺",
+      services:["水漏れ","トイレの詰まり"],hours:"9:00〜18:00",
+      phone:"026-000-0000",image:"",available:true},
+   ------------------------------------------------------------ */
+const PROVIDERS=[
+];
+
+/* ------------------------------------------------------------
+   ★ 将来の「相談案件」管理用の項目メモ【内部用・画面には表示しません】
+     受付番号 / 受付日時 / カテゴリー / 相談内容 / 相談者名 / 電話番号 /
+     地域 / 緊急性 / 対応状況 / 相談先候補 / 業者への確認状況 /
+     相談者への返答状況 / 最終結果
+     ※管理画面ができるまでは、ここに設計を残すだけです。
+   ------------------------------------------------------------ */
+const CASE_FIELDS=["id","receivedAt","category","detail","name","phone","area","urgency","status","candidates","providerCheck","replyStatus","result"];
+
+/* ------------------------------------------------------------
+   ★ 情報ページの文章（プライバシーポリシー・利用規約）
+     各項目は {h:"見出し", b:[ ... ]}。b の中の文字列は段落、
+     [ ... ] の配列は箇条書きになります。
+   ★ 機能を追加したとき（お問い合わせフォーム、アクセス解析、LINE、
+     通話の録音など）は、必ず「プライバシーポリシー」も更新してください。
+   ------------------------------------------------------------ */
+const POLICY_DATE={privacy:"",terms:""};
+
+const PRIVACY=[
+ {h:"はじめに",b:["長野市のお困りごと案内所（以下「本サイト」）は、利用者のプライバシーを大切にします。このページでは、本サイトが実際に行っている情報の取り扱いについてご説明します。"]},
+ {h:"本サイトのウェブページで取得する情報",b:["現在、本サイトのウェブページには、お問い合わせフォーム、会員登録、ログイン、アクセス解析ツール、広告、クリック計測を設置していません。そのため、ウェブページの閲覧だけで、氏名・電話番号・メールアドレスなどの個人情報を取得・保存することはありません。","また、本サイトは Cookie を独自に設定していません。"]},
+ {h:"総合受付（電話）で伺う情報",b:["「このことで相談する」から総合受付へお電話いただいた場合、ご相談の対応のために、次のような情報を伺うことがあります。",["お名前","電話番号","お住まいの地域","困りごとの内容・状況・緊急性"]]},
+ {h:"利用目的",b:["伺った情報は、次の目的に限って利用します。",["ご相談内容の確認","必要に応じた、地域の専門業者への相談・調整","相談者様へのご連絡・ご返答"]]},
+ {h:"専門業者への情報の共有",b:["ご相談内容に応じて専門業者へ相談する場合は、相談に必要な範囲に限って情報を伝えます。その際は、あらかじめお伝えしたうえで、ご了解を得ます。"]},
+ {h:"サイトの配信について",b:["本サイトは GitHub Pages を利用して配信しています。配信にあたり、サービス提供元がアクセス記録（IPアドレス等）を取得する場合があります。詳しくは提供元の方針をご確認ください。"]},
+ {h:"第三者への提供",b:["上記の専門業者への共有を除き、法令に基づく場合を除いて、ご本人の同意なく個人情報を第三者に提供しません。"]},
+ {h:"今後の変更",b:["今後、アクセス解析やお問い合わせフォームなどを導入する場合は、本ページを更新します。"]}
+];
+
+const TERMS=[
+ {h:"このサイトについて",b:["本サイトは、長野市での暮らしの困りごとについて、まず相談できる総合受付として運営するサイトです。ご相談内容に応じて、地域の専門業者へ相談することがあります。"]},
+ {h:"利用について",b:["本サイトをご利用になる方は、この利用規約に同意したものとみなします。ご自身の判断と責任でご利用ください。"]},
+ {h:"相談の流れについて",b:["総合受付で、困りごとの内容・地域・緊急性などを伺い、必要に応じて専門業者と調整したうえで、相談者へご連絡します。","緊急性のないご相談は、原則7日以内を目安にご連絡します。これは目安であり、期間内の対応をお約束するものではありません。","ご相談の内容によっては、専門業者をご案内できない場合や、解決できない場合があります。また、緊急対応を保証するものではありません。"]},
+ {h:"専門業者について",b:["相談先となる事業者は、それぞれが独立して事業を行っています。本サイトは、事業者の順位付けや比較を目的としていません。","本サイトは、掲載・紹介した事業者から紹介料等を受け取る場合があります。"]},
+ {h:"料金・契約について",b:["作業内容、料金、契約、支払いなどは、利用者と事業者との間で確認のうえ決めるものです。本サイトは、その契約の当事者ではありません。","相談したからといって、依頼する義務は生じません。"]},
+ {h:"免責事項",b:["掲載情報は正確になるよう努めますが、その完全性や最新性を保証するものではありません。","事業者とのやり取りや作業に関して生じたトラブルや損害について、本サイトは、法令で認められる範囲で責任を負いません。"]},
+ {h:"サービス内容の変更・停止",b:["本サイトの内容は、事前の予告なく変更・停止することがあります。"]},
+ {h:"禁止事項",b:["次の行為はおやめください。",["法令や公序良俗に反する行為","本サイトの運営を妨げる行為","事業者や第三者への迷惑行為、誹謗中傷","本サイトの内容の無断転載・無断販売","その他、運営者が不適切と判断する行為"]]},
+ {h:"著作権",b:["本サイトの文章・デザインなどの著作権は、運営者に帰属します。法令で認められる範囲を超えて、無断で利用することはできません。"]},
+ {h:"規約の変更",b:["必要に応じて、この規約を変更することがあります。変更後の規約は、本ページに掲載した時点から効力を持ちます。"]},
+ {h:"準拠法・管轄",b:["この規約には日本法を適用します。","管轄裁判所については、運営者情報の確定後に定めます。"]}
+];
+/* ===================================================== */
+
+const $=s=>document.querySelector(s);
+const esc=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const has=v=>v!==undefined&&v!==null&&String(v).trim()!=="";
+const DEF_TITLE=document.title;
+
+/* 総合受付の電話番号：数字として正しい時だけ有効（それ以外は発信しない） */
+const RPH=has(RECEPTION.phone)?String(RECEPTION.phone).trim():"";
+const RTEL=RPH.replace(/[^0-9+]/g,"");
+const PH_OK=/^\+?[0-9]{6,}$/.test(RTEL);
+
+/* 固定ヘッダーの実際の高さを取得してCSSに反映 */
+const hd=document.querySelector("header");
+const setH=()=>document.documentElement.style.setProperty("--header-h",hd.offsetHeight+"px");
+setH();addEventListener("resize",setH);
+if(window.ResizeObserver)new ResizeObserver(setH).observe(hd);
+
+function catCards(){
+  const h=CATEGORIES.map(c=>{
+    const svg=`<svg viewBox="0 0 24 24" aria-hidden="true">${c.icon}</svg>`;
+    return c.wide
+     ?`<a class="card wide" href="#cat=${c.id}">${svg}<div class="t"><b>${esc(c.name)}</b><br><small>${esc(c.desc)}</small></div><em>このことで相談する</em></a>`
+     :`<a class="card" href="#cat=${c.id}">${svg}<b>${esc(c.name)}</b><small>${esc(c.desc)}</small><em>このことで相談する</em></a>`;
+  }).join("");
+  document.querySelectorAll(".cats").forEach(e=>e.innerHTML=h);
+}
+
+function otherCats(curId){
+  const chips=CATEGORIES.filter(c=>c.id!==curId).map(c=>
+    `<a class="chip" href="#cat=${c.id}"><svg viewBox="0 0 24 24" aria-hidden="true">${c.icon}</svg><span>${esc(c.name)}</span></a>`).join("");
+  return `<h2>別のカテゴリー</h2><div class="chips">${chips}</div>`;
+}
+
+/* カテゴリー詳細：総合受付へ相談する */
+function categoryBody(cat){
+  return `<div class="flow"><h2>まずは総合受付で、お困りごとの状況をお聞きします。</h2>
+    <p>どんなことで困っているか、どこで起きているか、いつから起きているかなどを確認したうえで、必要に応じて地域の専門業者へ相談します。</p></div>
+    ${has(RECEPTION.responseNote)?`<p class="resp">${esc(RECEPTION.responseNote)}</p>`:""}
+    ${has(RECEPTION.hours)?`<p class="hours">受付時間：${esc(RECEPTION.hours)}</p>`:""}
+    ${RECEPTION.showEmergencyNotice&&has(RECEPTION.emergencyNotice)?`<p class="notice">${esc(RECEPTION.emergencyNotice)}</p>`:""}
+    ${PH_OK?"":`<p class="prep">総合受付の電話番号は現在準備中です</p>`}
+    <button class="btn" type="button" id="consult" data-cat="${esc(cat.id)}">このことで相談する</button>
+    ${has(RECEPTION.feeNote)?`<p class="feenote">${esc(RECEPTION.feeNote)}</p>`:""}`;
+}
+
+/* ===== 情報ページ ===== */
+const PENDING='<span class="pending">現在準備中です</span>';
+const okMail=s=>/^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/.test(s);
+const okPhone=s=>/^\+?[0-9]{6,}$/.test(String(s).replace(/[^0-9+]/g,""));
+function opVal(k){
+  const v=OPERATOR[k];
+  if(!has(v))return PENDING;
+  if(k==="email"&&okMail(v))return `<a class="lnk" href="mailto:${esc(v.trim())}">${esc(v.trim())}</a>`;
+  if(k==="phone"&&okPhone(v))return `<a class="lnk" href="tel:${esc(String(v).replace(/[^0-9+]/g,""))}">${esc(v)}</a>`;
+  return esc(v);
+}
+const dateLine=k=>`<p class="small" style="margin-top:28px">制定日：${has(POLICY_DATE[k])?esc(POLICY_DATE[k]):"準備中"}</p>`;
+function sections(arr){
+  return arr.map(s=>`<h2>${esc(s.h)}</h2>`+s.b.map(x=>Array.isArray(x)?`<ul>${x.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`:`<p>${esc(x)}</p>`).join("")).join("");
+}
+const PAGES={
+ about:{title:"運営者情報",html:()=>
+  `<p class="lead">困ったときに、気軽に相談できる場所をつくりたい。</p>
+   <dl class="info">
+    <div><dt>運営者名</dt><dd>${opVal("name")}</dd></div>
+    <div><dt>代表者名</dt><dd>${opVal("representative")}</dd></div>
+    <div><dt>所在地</dt><dd>${opVal("address")}</dd></div>
+    <div><dt>電話番号</dt><dd>${opVal("phone")}</dd></div>
+    <div><dt>メールアドレス</dt><dd>${opVal("email")}</dd></div>
+    <div><dt>事業内容</dt><dd>${opVal("business")}</dd></div>
+   </dl>`},
+ privacy:{title:"プライバシーポリシー",html:()=>sections(PRIVACY)+dateLine("privacy")},
+ terms:{title:"利用規約",html:()=>sections(TERMS)+dateLine("terms")},
+ contact:{title:"お問い合わせ",html:()=>
+  `<h2>お問い合わせについて</h2>
+   <p>本サイトについてのご意見・ご質問、事業者としての掲載のご相談などを受け付ける予定です。</p>
+   <p>暮らしの困りごとのご相談は、トップページで困りごとを選び、「このことで相談する」からお進みください。</p>
+   <h2>連絡先</h2>
+   <dl class="info"><div><dt>メールアドレス</dt><dd>${has(OPERATOR.email)?opVal("email"):'<span class="pending">お問い合わせ窓口は準備中です</span>'}</dd></div></dl>
+   <h2>お問い合わせ内容</h2>
+   <ul><li>本サイトの内容について</li><li>事業者としての掲載について</li><li>その他のご意見・ご要望</li></ul>`}
+};
+
+/* ===== 確認画面：開く時に履歴を1つ積むので、ブラウザの戻るでも「カテゴリー詳細」に戻れる ===== */
+let sheetOpen=false;
+function hideSheet(){$("#sheet").classList.remove("open");document.body.style.overflow=""}
+function openSheet(cat){
+  const call=$("#sh-call");
+  const row=(t,v,c)=>`<dt>${t}</dt><dd${c?` class="${c}"`:""}>${v}</dd>`;
+  let dl=row("相談先","長野市のお困りごと案内所 総合受付")+row("相談内容",esc(cat.name));
+  dl+=PH_OK?row("電話番号",esc(RPH),"ph"):row("電話番号",'<span class="pending">現在準備中です</span>');
+  if(has(RECEPTION.hours))dl+=row("受付時間",esc(RECEPTION.hours));
+  $("#sh-dl").innerHTML=dl;
+  $("#sh-n").textContent=PH_OK?RECEPTION.confirmNote:"総合受付の電話番号は現在準備中です。準備ができるまで、電話はかけられません。";
+  if(PH_OK){call.setAttribute("href","tel:"+RTEL);call.classList.remove("off");call.textContent="電話をかける"}
+  else{call.removeAttribute("href");call.classList.add("off");call.textContent="電話番号は準備中です"}
+  $("#sh-back").textContent="戻る";
+  $("#sheet").classList.add("open");
+  document.body.style.overflow="hidden";
+  if(!sheetOpen){sheetOpen=true;history.pushState({sheet:1},"")}
+  $("#sh-back").focus(); /* 誤ってEnterを押しても発信されないよう「戻る」にフォーカス */
+}
+function closeSheet(){ /* 「戻る」ボタン・外側タップ・Escで閉じる → カテゴリー詳細に戻る */
+  if(!sheetOpen)return;
+  sheetOpen=false;hideSheet();
+  if(history.state&&history.state.sheet)history.back();
+}
+addEventListener("popstate",()=>{if(sheetOpen){sheetOpen=false;hideSheet()}}); /* ブラウザの戻る */
+$("#vbody").addEventListener("click",e=>{
+  const b=e.target.closest("#consult");
+  if(!b)return;
+  const cat=CATEGORIES.find(c=>c.id===b.dataset.cat);
+  if(cat)openSheet(cat);
+});
+$("#sheet").addEventListener("click",e=>{if(e.target.closest("[data-close]"))closeSheet()});
+addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet()});
+
+function show(name){
+  $("#lp").style.display=name==="lp"?"":"none";
+  $("#view").style.display=name==="view"?"block":"none";
+  $("#page").style.display=name==="page"?"block":"none";
+}
+function route(){
+  if(sheetOpen){sheetOpen=false;hideSheet()}
+  const pm=location.hash.match(/^#(about|privacy|terms|contact)$/);
+  if(pm){
+    const pg=PAGES[pm[1]];
+    show("page");
+    $("#pt").textContent=pg.title;
+    $("#pb").innerHTML=pg.html();
+    document.title=pg.title+"｜長野市のお困りごと案内所";
+    scrollTo(0,0);
+    return;
+  }
+  document.title=DEF_TITLE;
+  const m=location.hash.match(/^#cat=(\w+)/);
+  const cat=m&&CATEGORIES.find(c=>c.id===m[1]);
+  if(!cat){
+    show("lp");
+    const id=decodeURIComponent(location.hash.slice(1));
+    const el=id&&document.getElementById(id);
+    if(el)requestAnimationFrame(()=>el.scrollIntoView());
+    return;
+  }
+  show("view");
+  $("#vt").textContent=cat.name+"について相談する";
+  $("#vd").textContent=cat.desc;
+  $("#vbody").innerHTML=categoryBody(cat);
+  $("#others").innerHTML=otherCats(cat.id);
+  scrollTo(0,0);
+}
+catCards();
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
