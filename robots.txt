@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://history-of-hanabi.github.io/Assistance-Center/sitemap.xml
